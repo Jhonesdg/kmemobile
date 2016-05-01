@@ -14,6 +14,10 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:src="@drawable/kmelx"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -23,7 +27,7 @@
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="Usuario"
+                android:hint="@string/User"
                 android:id="@+id/user"
                 android:layout_weight="1" />
         </LinearLayout>
@@ -37,9 +41,33 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/paswdfield"
-                android:hint="Contraseña"
+                android:hint="@string/Password"
                 android:layout_weight="1" />
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="@string/Signin"
+                android:background="@color/colorPrimary"
+                android:textColor="#fff"/>
+            <Button
+                android:layout_width="150dp"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_height="wrap_content"
+                android:text="@string/Signup"
+                android:id="@+id/Signup"
+                android:background="@color/colorPrimary"
+                android:textColor="#fff"
+                android:onClick="Signup"/>
+
+        </LinearLayout>
+
         <com.facebook.login.widget.LoginButton
             android:id="@+id/login_button"
             android:layout_width="wrap_content"
