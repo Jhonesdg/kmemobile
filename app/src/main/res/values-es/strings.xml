@@ -4,4 +4,7 @@
     <string name="Signin">Ingresar</string>
     <string name="Signup">Registrarse</string>
     <string name="User">Usuario</string>
+    <string name="Full_name">Nombre completo</string>
+    <string name="Email">Correo electronico</string>
+    <string name="Create_account">Crear cuenta</string>
 </resources>

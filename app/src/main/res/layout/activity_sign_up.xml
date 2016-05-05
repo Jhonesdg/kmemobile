@@ -16,12 +16,12 @@
         android:src="@drawable/kmelx"/>
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:layout_height="wrap_content">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Full name"
+            android:hint="@string/Full_name"
             android:id="@+id/username" />
     </android.support.design.widget.TextInputLayout>
     <android.support.design.widget.TextInputLayout
@@ -30,7 +30,7 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:hint="Email"
+            android:hint="@string/Email"
             android:layout_height="wrap_content"
             android:id="@+id/email" />
 
@@ -43,14 +43,26 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="@string/Password"
             android:id="@+id/pasword" />
     </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password again"
+            android:id="@+id/pasword2" />
+    </android.support.design.widget.TextInputLayout>
+
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Create Account"
+        android:text="@string/Create_account"
         android:layout_marginTop="20dp"
         android:background="@color/colorAccent"
         android:textColor="#656"/>
