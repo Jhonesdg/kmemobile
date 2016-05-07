@@ -2,40 +2,26 @@ package com.kmelx.kmemobile;
 
 
 import android.app.Application;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
-import android.util.Base64;
-import android.util.Log;
-import com.facebook.FacebookSdk;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-/**
- * Created by Windows on 26-03-2015.
- */
+import android.content.Context;
 public class Myapplication extends Application {
+    private static Myapplication mInstance;
+    private static Context mAppContext;
+
     @Override
     public void onCreate() {
         super.onCreate();
-        printKeyHash();
+        mInstance = this;
+
+        this.setAppContext(getApplicationContext());
     }
 
-    /**
-     * Call this method inside onCreate once to get your hash key
-     */
-    public void printKeyHash() {
-        try {
-            PackageInfo info = getPackageManager().getPackageInfo("com.kmelx.kmemobile", PackageManager.GET_SIGNATURES);
-            for (Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                Log.e("KMEMOBILELULITO", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-
-        } catch (NoSuchAlgorithmException e) {
-
-        }
+    public static Myapplication getInstance(){
+        return mInstance;
+    }
+    public static Context getAppContext() {
+        return mAppContext;
+    }
+    public void setAppContext(Context mAppContext) {
+        this.mAppContext = mAppContext;
     }
 }

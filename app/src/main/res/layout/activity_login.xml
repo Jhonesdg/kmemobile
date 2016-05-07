@@ -71,6 +71,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/Signin"
                 android:background="#fff"
+                android:id="@+id/btnlogin"
                 android:textColor="#656"/>
 
             <TextView
@@ -83,6 +84,8 @@
                 android:layout_gravity="center"
                 android:textColor="#fff"
                 android:onClick="Signup"/>
+
+
 
         </LinearLayout>
 
