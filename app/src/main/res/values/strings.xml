@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools" tools:locale='en'>
     <string name="app_name" translatable="false">KmeMobile</string>
     <string name="facebook_app_id" translatable="false">485045968335965</string>
+    <string name="schema_name" translatable="false">http://kmelx.com/</string>
     <string name="User">User</string>
     <string name="Password">Password</string>
     <string name="Signin">Signin</string>
