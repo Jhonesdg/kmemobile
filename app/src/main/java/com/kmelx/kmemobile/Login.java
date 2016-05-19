@@ -3,6 +3,7 @@ package com.kmelx.kmemobile;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -21,6 +22,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,7 +34,6 @@ public class Login extends AppCompatActivity {
     JsonObjectRequest array;
     RequestQueue mRequestQueue;
     private final String url = "http://kmelx.com/api/login_kme/";
-    private final String TAG = "PRUEBITA";
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +50,20 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         String token= response;
-                        Toast.makeText(getApplicationContext(),response,Toast.LENGTH_SHORT).show();
+
+                        try {
+                            JSONObject obj = new JSONObject(response);
+
+                            if (obj.getString("status")=="true"){
+                                Intent intento = new Intent (Login.this, Home.class);
+                                startActivity(intento);
+                            }
+                            Toast.makeText(getApplicationContext(),obj.getString("status"),Toast.LENGTH_SHORT).show();
+
+                        } catch (Throwable t) {
+                            Log.e("My App", "Could not parse malformed JSON: \"" + response + "\"");
+                        }
+
 
                     }
                 }, new Response.ErrorListener() {
