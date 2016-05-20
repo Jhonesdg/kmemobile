@@ -46,6 +46,10 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
             mRequestQueue= VolleySingleton.getInstance().getmRequestQueue();
+                if (username.getText().toString().trim().length() > 0 && passwd.getText().toString().trim().length() > 0){
+
+
+
                 StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -57,8 +61,10 @@ public class Login extends AppCompatActivity {
                             if (obj.getString("status")=="true"){
                                 Intent intento = new Intent (Login.this, Home.class);
                                 startActivity(intento);
+                            }else{
+                                Toast.makeText(getApplicationContext(),"Usuario o clave incorrectos",Toast.LENGTH_SHORT).show();
+
                             }
-                            Toast.makeText(getApplicationContext(),obj.getString("status"),Toast.LENGTH_SHORT).show();
 
                         } catch (Throwable t) {
                             Log.e("My App", "Could not parse malformed JSON: \"" + response + "\"");
@@ -89,8 +95,12 @@ public class Login extends AppCompatActivity {
                     }
                 };
                 mRequestQueue.add(request);
+            }else{
+                    Toast.makeText(getApplicationContext(),"Campos Vacios",Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
 
 
 

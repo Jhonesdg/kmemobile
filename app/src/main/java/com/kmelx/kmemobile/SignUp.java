@@ -29,14 +29,14 @@ public class SignUp extends AppCompatActivity {
     EditText cpass;
     EditText email;
 
-    private final String url = "http://kmelx.com/api/registerNew/";
+    private final String url = "http://kmelx.com/api/registerUser/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         CreateAcc= (Button) findViewById(R.id.create_account);
         full_name= (EditText) findViewById(R.id.username);
-        pass= (EditText) findViewById(R.id.pasword);
+        pass= (EditText) findViewById(R.id.apasword);
         cpass= (EditText) findViewById(R.id.pasword2);
         email= (EditText) findViewById(R.id.email);
 
@@ -44,23 +44,30 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mRequestQueue= VolleySingleton.getInstance().getmRequestQueue();
+
+                if(!full_name.getText().toString().equals("") &&
+                        !pass.getText().toString().equals("") &&
+                        !email.getText().toString().equals("")) {
+
+
+
                 StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        String token= response;
-
                         try {
-                            JSONObject obj = new JSONObject(response);
+                            JSONObject sign = new JSONObject(response);
 
-
+                            if (sign.getString("username")!=""){
                                 Intent intento = new Intent (SignUp.this, Home.class);
                                 startActivity(intento);
-
-                            Toast.makeText(getApplicationContext(),response.toString(),Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(getApplicationContext(),sign.getString("status"),Toast.LENGTH_SHORT).show();
+                            }
 
                         } catch (Throwable t) {
                             Log.e("My App", "Could not parse malformed JSON: \"" + response + "\"");
                         }
+
 
 
                     }
@@ -89,6 +96,10 @@ public class SignUp extends AppCompatActivity {
                     }
                 };
                 mRequestQueue.add(request);
+
+            }else{
+                    Toast.makeText(SignUp.this, "Campos Vacios", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
