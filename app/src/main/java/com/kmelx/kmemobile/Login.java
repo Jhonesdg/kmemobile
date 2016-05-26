@@ -1,13 +1,16 @@
 package com.kmelx.kmemobile;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Toast;
@@ -33,6 +36,7 @@ public class Login extends AppCompatActivity {
     EditText passwd;
     JsonObjectRequest array;
     RequestQueue mRequestQueue;
+    SharedPreferences spPersonalData;
     private final String url = "http://kmelx.com/api/login_kme/";
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -42,6 +46,12 @@ public class Login extends AppCompatActivity {
         username= (EditText) findViewById(R.id.username);
         passwd= (EditText) findViewById(R.id.pasword);
         btnLogin= (Button) findViewById(R.id.btnlogin);
+
+        SharedPreferences sp = getSharedPreferences("spPersonalData",MODE_PRIVATE);
+        if(sp.getBoolean("KeepMeSigned",false)){
+            Intent intent = new Intent(this, Home.class);
+            startActivity(intent);
+        }
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,6 +69,13 @@ public class Login extends AppCompatActivity {
                             JSONObject obj = new JSONObject(response);
 
                             if (obj.getString("status")=="true"){
+                                CheckBox chckBxKeppMeSigned = (CheckBox) findViewById(R.id.chckBxKeppMeSigned);
+                                boolean KeepMeSigned = chckBxKeppMeSigned.isChecked();
+
+                                SharedPreferences sp = getSharedPreferences("spPersonalData", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sp.edit();
+                                editor.putBoolean("KeepMeSigned",KeepMeSigned);
+                                editor.apply();
                                 Intent intento = new Intent (Login.this, Home.class);
                                 startActivity(intento);
                             }else{
@@ -107,6 +124,7 @@ public class Login extends AppCompatActivity {
 
 
     }
+
     public void Signup(View v){
         Intent intento = new Intent (Login.this, SignUp.class);
         startActivity(intento);
