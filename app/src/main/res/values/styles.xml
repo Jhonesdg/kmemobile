@@ -1,7 +1,40 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionBarStyle">@style/Widget.AppTheme.ActionBar</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.AppTheme.ActionBar</item>
+        <item name="actionBarPopupTheme">@style/ThemeOverlay.AppTheme.PopupMenu</item>
+    </style>
+    <style name="Widget.AppTheme.ActionBar" parent="Widget.AppCompat.ActionBar.Solid">
+        <!-- action bar background -->
+        <item name="background">@color/colorPrimary</item>
+        <!-- action bar elevation -->
+        <item name="elevation">4dp</item>
+    </style>
+
+    <style name="ThemeOverlay.AppTheme.ActionBar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <!-- title text color -->
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+        <!-- subtitle text color -->
+        <item name="android:textColorSecondary">?android:textColorPrimary</item>
+        <!-- action menu item text color -->
+        <item name="actionMenuTextColor">?android:textColorPrimary</item>
+        <!-- action menu item icon color - only applies to appcompat-v7 icons :( -->
+        <item name="colorControlNormal">?android:textColorPrimary</item>
+    </style>
+
+    <style name="ThemeOverlay.AppTheme.PopupMenu" parent="ThemeOverlay.AppCompat.Dark">
+        <!-- popup menu background - NEVER "android:background" !!! in themes -->
+        <item name="android:colorBackground">@color/colorPrimary</item>
+        <!-- popup menu item text color -->
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+    </style>
+    <style name="AppTheme2" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
