@@ -1,4 +1,4 @@
-package com.kmelx.kmemobile;
+package com.kmelx.kmemobile.Courses;
 
 /**
  * Created by jonathan on 27/05/16.

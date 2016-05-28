@@ -1,4 +1,4 @@
-package com.kmelx.kmemobile;
+package com.kmelx.kmemobile.Account;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +16,7 @@ import com.facebook.FacebookException;
 import com.facebook.Profile;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.kmelx.kmemobile.R;
 
 
 /**
@@ -31,6 +32,7 @@ public class Fblogin extends Fragment {
             Log.d("VIVZ", "onSuccess");
             AccessToken accessToken = loginResult.getAccessToken();
             Profile profile = Profile.getCurrentProfile();
+            Log.d("FACEBOOK", String.valueOf(profile));
             mTextDetails.setText(constructWelcomeMessage(profile));
 
         }

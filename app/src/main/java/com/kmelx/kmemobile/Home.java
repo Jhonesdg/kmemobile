@@ -8,7 +8,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+
+import com.kmelx.kmemobile.Account.Login;
+import com.kmelx.kmemobile.Courses.FragmentAllCourses;
+import com.kmelx.kmemobile.Courses.FragmentMyCourses;
 
 
 public class Home extends AppCompatActivity {

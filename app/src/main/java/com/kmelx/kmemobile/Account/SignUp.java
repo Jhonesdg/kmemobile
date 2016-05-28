@@ -1,6 +1,7 @@
-package com.kmelx.kmemobile;
+package com.kmelx.kmemobile.Account;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.kmelx.kmemobile.Home;
+import com.kmelx.kmemobile.R;
+import com.kmelx.kmemobile.VolleySingleton;
 
 import org.json.JSONObject;
 
@@ -58,6 +62,10 @@ public class SignUp extends AppCompatActivity {
                             JSONObject sign = new JSONObject(response);
 
                             if (sign.getString("username")!=""){
+                                SharedPreferences sp = getSharedPreferences("spPersonalData", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sp.edit();
+                                editor.putString("Username", String.valueOf(email.getText()));
+                                editor.putString("Password", String.valueOf(pass.getText()));
                                 Intent intento = new Intent (SignUp.this, Home.class);
                                 startActivity(intento);
                             }else{
