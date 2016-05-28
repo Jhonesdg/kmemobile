@@ -1,15 +1,14 @@
-package com.kmelx.kmemobile;
+package com.kmelx.kmemobile.Courses;
 
-import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,15 +18,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.kmelx.kmemobile.Myapplication;
+import com.kmelx.kmemobile.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Vector;
 
 /**
  * Created by jonathan on 26/05/16.
@@ -84,7 +83,7 @@ public class FragmentAllCourses extends Fragment {
                                 course.setThumbnailUrl(obj.getString("image"));
                                 course.setDescription(obj.getString("description"));
 
-                                course.setYear(obj.getInt("pk"));
+                                course.setUuid(obj.getString("uuid"));
 
 
                                 // adding movie to movies array
@@ -115,9 +114,12 @@ public class FragmentAllCourses extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //String datoPulsado = (parent.getAdapter().getItem(position)).toString();
-                String datoPulsado = ((TextView) view.findViewById(R.id.courses_name)).getText().toString();
+                String datoPulsado = ((TextView) view.findViewById(R.id.uuid)).getText().toString();
 
-                Toast.makeText(getActivity(), datoPulsado, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Abriendo contenido", Toast.LENGTH_SHORT).show();
+                SharedPreferences sp = getActivity().getSharedPreferences("spPersonalData",0);
+                Intent web= new Intent(Intent.ACTION_VIEW, Uri.parse("http://kmelx.com/api/login_and_redirect/?username="+sp.getString("Username","") +"&next=/lms/course/"+datoPulsado+"/simple/&password="+ sp.getString("Password","")+""));
+                startActivity(web);
             }
         });
 

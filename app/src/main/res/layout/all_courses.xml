@@ -29,6 +29,11 @@
         android:layout_below="@+id/courses_name"
         android:layout_toRightOf="@+id/id_image_courses"
         android:text="por que no haz cargado nada"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:id="@+id/uuid"/>
 
 
 

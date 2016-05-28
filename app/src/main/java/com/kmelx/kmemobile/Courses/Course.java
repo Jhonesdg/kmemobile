@@ -1,4 +1,4 @@
-package com.kmelx.kmemobile;
+package com.kmelx.kmemobile.Courses;
 
 /**
  * Created by jonathan on 27/05/16.
@@ -8,8 +8,8 @@ import android.util.Log;
 import java.util.ArrayList;
 
 public class Course {
-    private String title, thumbnailUrl,url;
-    private int year;
+    private String title, thumbnailUrl,uuid;
+
     private String description;
 
     public Course() {
@@ -21,6 +21,7 @@ public class Course {
         this.title = name;
         this.thumbnailUrl = thumbnailUrl;
         this.description = description;
+        this.uuid=uuid;
 
     }
 
@@ -40,12 +41,12 @@ public class Course {
         this.thumbnailUrl = thumbnailUrl;
     }
 
-    public int getYear() {
-        return year;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public String getDescription() {

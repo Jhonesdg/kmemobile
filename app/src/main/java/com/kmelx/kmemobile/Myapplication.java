@@ -9,6 +9,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
+import com.kmelx.kmemobile.Courses.LruBitMapCache;
 
 public class Myapplication extends Application {
     private static Myapplication mInstance;

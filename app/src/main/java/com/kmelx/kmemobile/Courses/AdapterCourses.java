@@ -1,4 +1,4 @@
-package com.kmelx.kmemobile;
+package com.kmelx.kmemobile.Courses;
 
 
 
@@ -6,7 +6,6 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +15,9 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.kmelx.kmemobile.Courses.Course;
+import com.kmelx.kmemobile.Myapplication;
+import com.kmelx.kmemobile.R;
 
 public class AdapterCourses extends BaseAdapter {
     private Activity activity;
@@ -62,6 +64,7 @@ public class AdapterCourses extends BaseAdapter {
                 .findViewById(R.id.id_image_courses);
         TextView title = (TextView) convertView.findViewById(R.id.courses_name);
         TextView detail = (TextView) convertView.findViewById(R.id.courses_detail);
+        TextView uuid = (TextView) convertView.findViewById(R.id.uuid);
 
 
         // getting movie data for the row
@@ -69,6 +72,7 @@ public class AdapterCourses extends BaseAdapter {
 
         // thumbnail image
         thumbNail.setImageUrl(m.getThumbnailUrl(), imageLoader);
+        uuid.setText(m.getUuid());
 
         // title
         String sTitle = String.valueOf(m.getTitle());
