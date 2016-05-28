@@ -75,6 +75,7 @@ public class Login extends AppCompatActivity {
                                 SharedPreferences sp = getSharedPreferences("spPersonalData", MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sp.edit();
                                 editor.putBoolean("KeepMeSigned",KeepMeSigned);
+                                editor.putString("Username", String.valueOf(username.getText()));
                                 editor.apply();
                                 Intent intento = new Intent (Login.this, Home.class);
                                 startActivity(intento);

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="100dp"
+
+    >
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/id_image_courses"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="8dp" />
+    <TextView
+        android:id="@+id/courses_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="17dp"
+        android:layout_alignTop="@+id/id_image_courses"
+        android:layout_toRightOf="@+id/id_image_courses"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="No hay cursos"/>
+    <TextView
+        android:id="@+id/courses_detail"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_alignBottom="@id/id_image_courses"
+        android:layout_below="@+id/courses_name"
+        android:layout_toRightOf="@+id/id_image_courses"
+        android:text="por que no haz cargado nada"/>
+
+
+
+
+</RelativeLayout>
